@@ -4,8 +4,8 @@
     <div class="yun-file">
       <div class="pb35 mt20">
         <div class="yun-file-title flex">
-          <text class="f28 fw5 c0">我分享的文档</text>
-          <text class="f24 c153 fw4 pl20 pt10 pb10" @click="yunFileMoreEvent">全部</text>
+          <text class="f28 fw5 c0">{{i18n.RecentlyUsedFile}}</text>
+          <text class="f24 c153 fw4 pl20 pt10 pb10" @click="yunFileMoreEvent">{{i18n.All}}</text>
         </div>
         <div class="mt36 prl20 file-height">
           <div class="flex" v-if='isShowBM'>
@@ -22,7 +22,7 @@
             <div class="no-file flex-ac flex-jc" v-if='yunFileByMeArr.length == 0'>
               <div class="flex-dr">
                 <bui-image src="/image/sleep1.png" width="42px" height="39px"></bui-image>
-                <text class="f26 c51 fw4 pl15 center-height ">{{isErrorBM?'暂无文档':'加载失败'}}</text>
+                <text class="f26 c51 fw4 pl15 center-height ">{{isErrorBM?i18n.NoneData:i18n.ErrorLoadData}}</text>
               </div>
             </div>
           </div>
@@ -42,7 +42,8 @@
         yunFileByMeArr: [],
         isErrorBM: true,
         isShowBM: false,
-        channel: new BroadcastChannel('WidgetsMessage')
+        channel: new BroadcastChannel('WidgetsMessage'),
+        i18n: ''
       }
     },
     methods: {
@@ -145,6 +146,11 @@
           });
         }, 100)
       }
+    },
+    created() {
+      linkapi.getLanguage((res) => {
+        this.i18n = this.$window[res]
+      })
     },
     mounted() {
       this.channel.onmessage = (event) => {
