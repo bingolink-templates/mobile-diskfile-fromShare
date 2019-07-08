@@ -161,8 +161,6 @@
 <style lang="css" src="../css/common.css"></style>
 <style>
     .main {
-        flex: 1;
-        background-color: #666;
     }
     .yun-file {
         background-color: #fff;
