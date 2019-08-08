@@ -6,9 +6,9 @@ module.exports = {
         "ErrorLoadData": "加载失败"
     },
     "zh-hk": {
-        "FileIShare": "我分享的檔案",
+        "FileIShare": "我分享的文檔",
         "All": "更多",
-        "NoneData": "暫無檔案",
+        "NoneData": "暫無文檔",
         "ErrorLoadData": "加載失敗"
     },
     "en": {
