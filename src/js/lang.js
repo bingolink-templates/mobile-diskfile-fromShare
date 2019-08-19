@@ -12,7 +12,7 @@ module.exports = {
         "ErrorLoadData": "加載失敗"
     },
     "en": {
-        "FileIShare": "File i share",
+        "FileIShare": "Shared files by me",
         "All": "More",
         "NoneData": "No archives data",
         "ErrorLoadData": "loading failed"
