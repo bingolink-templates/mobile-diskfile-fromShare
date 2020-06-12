@@ -131,16 +131,23 @@ export default {
             this.isErrorBM = false
             this.broadcastWidgetHeight()
         },
+        getComponentRect(_params) {
+            dom.getComponentRect(this.$refs.wrap, (ret) => {
+                this.channel.postMessage({
+                    widgetHeight: ret.size.height,
+                    id: _params.id
+                });
+            });
+        },
         broadcastWidgetHeight() {
             let _params = this.$getPageParams();
+            // 防止高度通知失败
             setTimeout(() => {
-                dom.getComponentRect(this.$refs.wrap, (ret) => {
-                    this.channel.postMessage({
-                        widgetHeight: ret.size.height,
-                        id: _params.id
-                    });
-                });
+                this.getComponentRect(_params)
             }, 200)
+            setTimeout(() => {
+                this.getComponentRect(_params)
+            }, 1200)
         }
     },
     created() {
